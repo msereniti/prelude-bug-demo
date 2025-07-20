@@ -5,10 +5,8 @@ import { createRoot } from "react-dom/client";
 function App() {
   const [dispatchId, setDispatchId] = useState<string>("");
   const handleDIspatch = async () => {
-    if (process.env.PRELUDE_SDK_KEY) {
-      const newDispatchId = await dispatchSignals(process.env.PRELUDE_SDK_KEY);
-      setDispatchId(newDispatchId);
-    }
+    const newDispatchId = await dispatchSignals(process.env.PRELUDE_SDK_KEY ?? "non-working-key-fallback");
+    setDispatchId(newDispatchId);
   };
 
   return (
